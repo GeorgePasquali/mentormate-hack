@@ -14,6 +14,7 @@ const paypal = require('paypal-rest-sdk');
 const lob = require('lob')(process.env.LOB_KEY);
 const ig = require('instagram-node').instagram();
 const axios = require('axios');
+const User = require('../models/User');
 
 /**
  * GET /api
@@ -24,6 +25,21 @@ exports.getApi = (req, res) => {
     title: 'API Examples'
   });
 };
+
+exports.postPostInfo = (res, req) => {
+
+  User.findById(req.user.id, (err, user)=> {
+    if (err) { return next(err); }
+    user.postStatus = req.body.status || false;
+    user.save((err) => {
+      if (err) {
+        return next(err);
+      }
+    });
+  })
+
+  res.status(200);
+}
 
 /**
  * GET /api/foursquare
