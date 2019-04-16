@@ -1,0 +1,18 @@
+extends layout
+
+block content
+  h1 Post Manager
+  p.lead Here you can browse your post office
+  hr
+  .row
+    .col-md-3
+      h2 Post Is Full:
+    .col-md-6
+      span.dot
+  hr
+  .card(style='width: 18rem;')
+  ul.list-group.list-group-flush
+    li.list-group-item You have unpaid Current Bills: Cost 22.55$
+      button.btn.btn-info(type='button', style='margin-left:10px') Pay Now!
+    li.list-group-item Dapibus ac facilisis in
+    li.list-group-item Vestibulum at eros
